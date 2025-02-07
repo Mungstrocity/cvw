@@ -19,6 +19,13 @@
 .global fir
 
 fir:
+    lw t1, 4(a0) //address of 1st line a0 => add 4 to get to second address and put it in t1
+
+
+    // first part use sari : shift right arithmetic immediate
+
+    // all other shifts us sli : shift left immediate
+    // final address should be = original + 4(20)
 
 
 

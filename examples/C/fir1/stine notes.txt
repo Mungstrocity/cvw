@@ -1,0 +1,96 @@
+(cvw) 09-comp-arch-m@CEAT-ENDV350-09L:~/Desktop/Labs/ecen4243S25-main/cvw/examples/C/fir1$ make
+riscv64-unknown-elf-gcc -o fir1 -gdwarf-2 -O\
+  -march=rv64gc -mabi=lp64d -mcmodel=medany \
+  -nostdlib -static -lm -fno-tree-loop-distribute-patterns \
+  -Tcommon/test.ld -Icommon \
+  fir1.c common/crt.S common/syscalls.c
+In file included from fir1.c:2:
+util.h:76:10: fatal error: encoding.h: No such file or directory
+   76 | #include "encoding.h"
+      |          ^~~~~~~~~~~~
+compilation terminated.
+cc1: fatal error: common/crt.S: No such file or directory
+compilation terminated.
+cc1: fatal error: common/syscalls.c: No such file or directory
+compilation terminated.
+make: *** [Makefile:8: fir1] Error 1
+(cvw) 09-comp-arch-m@CEAT-ENDV350-09L:~/Desktop/Labs/ecen4243S25-main/cvw/examples/C/fir1$ ls ../common
+crt.S  encoding.h  LICENSE  README  syscalls.c  test.ld  util.h
+(cvw) 09-comp-arch-m@CEAT-ENDV350-09L:~/Desktop/Labs/ecen4243S25-main/cvw/examples/C/fir1$ ls ../common
+crt.S  encoding.h  LICENSE  README  syscalls.c  test.ld  util.h
+(cvw) 09-comp-arch-m@CEAT-ENDV350-09L:~/Desktop/Labs/ecen4243S25-main/cvw/examples/C/fir1$ make
+riscv64-unknown-elf-gcc -o fir1 -gdwarf-2 -O\
+  -march=rv64gc -mabi=lp64d -mcmodel=medany \
+  -nostdlib -static -lm -fno-tree-loop-distribute-patterns \
+  -T..common/test.ld -I../common \
+  fir1.c common/crt.S common/syscalls.c
+cc1: fatal error: common/crt.S: No such file or directory
+compilation terminated.
+cc1: fatal error: common/syscalls.c: No such file or directory
+compilation terminated.
+make: *** [Makefile:8: fir1] Error 1
+(cvw) 09-comp-arch-m@CEAT-ENDV350-09L:~/Desktop/Labs/ecen4243S25-main/cvw/examples/C/fir1$ ls ../common
+crt.S  encoding.h  LICENSE  README  syscalls.c  test.ld  util.h
+(cvw) 09-comp-arch-m@CEAT-ENDV350-09L:~/Desktop/Labs/ecen4243S25-main/cvw/examples/C/fir1$ make
+riscv64-unknown-elf-gcc -o fir1 -gdwarf-2 -O\
+  -march=rv64gc -mabi=lp64d -mcmodel=medany \
+  -nostdlib -static -lm -fno-tree-loop-distribute-patterns \
+  -T..common/test.ld -I../common \
+  fir1.c fir1.S ../common/crt.S ..common/syscalls.c
+cc1: fatal error: ..common/syscalls.c: No such file or directory
+compilation terminated.
+make: *** [Makefile:8: fir1] Error 1
+(cvw) 09-comp-arch-m@CEAT-ENDV350-09L:~/Desktop/Labs/ecen4243S25-main/cvw/examples/C/fir1$ ls ../common
+crt.S  encoding.h  LICENSE  README  syscalls.c  test.ld  util.h
+(cvw) 09-comp-arch-m@CEAT-ENDV350-09L:~/Desktop/Labs/ecen4243S25-main/cvw/examples/C/fir1$ make
+riscv64-unknown-elf-gcc -o fir1 -gdwarf-2 -O\
+  -march=rv64gc -mabi=lp64d -mcmodel=medany \
+  -nostdlib -static -lm -fno-tree-loop-distribute-patterns \
+  -T../common/test.ld -I../common \
+  fir1.c fir1.S ../common/crt.S ../common/syscalls.c
+/opt/riscv/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/bin/ld: /tmp/cch46hRT.o: in function `donej':
+/home/09-comp-arch-m/Desktop/Labs/ecen4243S25-main/cvw/examples/C/fir1/fir1.S:26: multiple definition of `fir'; /tmp/ccgKOWbf.o:/home/09-comp-arch-m/Desktop/Labs/ecen4243S25-main/cvw/examples/C/fir1/fir1.c:24: first defined here
+collect2: error: ld returned 1 exit status
+make: *** [Makefile:8: fir1] Error 1
+(cvw) 09-comp-arch-m@CEAT-ENDV350-09L:~/Desktop/Labs/ecen4243S25-main/cvw/examples/C/fir1$ make
+riscv64-unknown-elf-gcc -o fir1 -gdwarf-2 -O\
+  -march=rv64gc -mabi=lp64d -mcmodel=medany \
+  -nostdlib -static -lm -fno-tree-loop-distribute-patterns \
+  -T../common/test.ld -I../common \
+  fir1.c ../common/crt.S ../common/syscalls.c
+riscv64-unknown-elf-objdump -S -D fir1 > fir1.objdump
+spike fir1
+y[0] = 4fad3f2f
+y[1] = 627c6236
+y[2] = 4fad3f32
+y[3] = 1e6f0e17
+y[4] = e190f1eb
+y[5] = b052c0ce
+y[6] = 9d839dc6
+y[7] = b052c0cb
+y[8] = e190f1e6
+y[9] = 1e6f0e12
+y[10] = 4fad3f2f
+y[11] = 627c6236
+y[12] = 4fad3f32
+y[13] = 1e6f0e17
+y[14] = e190f1eb
+y[15] = b052c0ce
+y[16] = 9d839dc6
+mcycle = 856
+minstret = 863
+(cvw) 09-comp-arch-m@CEAT-ENDV350-09L:~/Desktop/Labs/ecen4243S25-main/cvw/examples/C/fir1$ spike --isa=rv64gc -d fir1
+(spike) quit
+(cvw) 09-comp-arch-m@CEAT-ENDV350-09L:~/Desktop/Labs/ecen4243S25-main/cvw/examples/C/fir1$ spike --isa=rv64gc -d fir1
+(spike) until pc 0 0X00000000800001d0
+(spike) until pc 0 0X800001d0        
+(spike) reg 0
+zero: 0x0000000000000000  ra: 0x00000000800002c8  sp: 0x0000000080020eb0  gp: 0x0000000080001848
+  tp: 0x0000000080001080  t0: 0x0000000080000120  t1: 0x627c62364fad3f2f  t2: 0x0000000000000000
+  s0: 0x0000000080021000  s1: 0x0000000080020ef8  a0: 0x0000000080020f50  a1: 0x0000000080020f40
+  a2: 0x0000000080020ef8  a3: 0x0000000000000014  a4: 0x0000000000000004  a5: 0x00000000000000d4
+  a6: 0xb052c0cee190f1eb  a7: 0x1e6f0e174fad3f32  s2: 0x0000000000000001  s3: 0x0000000000000000
+  s4: 0x0000000080001068  s5: 0x0000000080001080  s6: 0x0000000000000000  s7: 0x0000000000000000
+  s8: 0x0000000000000000  s9: 0x0000000000000000 s10: 0x0000000000000000 s11: 0x0000000000000000
+  t3: 0x79bc384d79bc384d  t4: 0x4b3c8c1200000000  t5: 0x0000000000000000  t6: 0x0000000000000000
+(spike) 
