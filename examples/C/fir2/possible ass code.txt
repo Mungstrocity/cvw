@@ -1,0 +1,33 @@
+    // Initialize pointers and counters
+    mv t0, a2          // t0 = &y[0]
+    add t1, a0, a4     // t1 = &x[m-1]
+    add t2, a1, a4     // t2 = &c[m]
+    sub t3, a3, a4     // t3 = n - m + 1 (outer loop count)
+    mv t4, zero        // t4 = 0 (outer loop index)
+
+outer_loop:
+    beq t4, t3, done   // if outer loop index == outer loop count, done
+    mv t5, zero        // t5 = 0 (inner loop index)
+    mv t6, zero        // t6 = sum
+
+inner_loop:
+    beq t5, a4, store  // if inner loop index == m, store result
+    lw t7, 0(t1)       // t7 = x[j + i + (m-1)]
+    lw t8, 0(t2)       // t8 = c[i]
+    mul t9, t7, t8     // t9 = c[i] * x[j + i + (m-1)]
+    add t6, t6, t9     // sum += c[i] * x[j + i + (m-1)]
+    addi t1, t1, 4     // increment x pointer
+    addi t2, t2, 4     // increment c pointer
+    addi t5, t5, 1     // increment inner loop index
+    j inner_loop       // repeat inner loop
+
+store:
+    sw t6, 0(t0)       // y[j] = sum
+    addi t0, t0, 4     // increment y pointer
+    addi t4, t4, 1     // increment outer loop index
+    addi t1, a0, a4    // reset x pointer to &x[m-1]
+    addi t2, a1, a4    // reset c pointer to &c[m]
+    j outer_loop       // repeat outer loop
+
+done:
+    ret                // return
