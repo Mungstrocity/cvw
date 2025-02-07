@@ -3,8 +3,7 @@
 
 // Add two Q1.31 fixed point numbers
 int add_q31(int a, int b) {
-int z = a+b;
-return z;
+return a+b;
 }
 
 // Multiplly two Q1.31 fixed point numbers
