@@ -1,7 +1,7 @@
 #include <stdio.h> // supports printf
 #include "util.h"  // supports verify
 
-// // Add two Q1.31 fixed point numbers
+/*// // Add two Q1.31 fixed point numbers
 // int add_q31(int a, int b) {
 
 // }
@@ -27,7 +27,8 @@
 //             y[j] = add_q31(y[j], mul_q31(c[i], x[j-i+(m-1)]));
 //     }
 // }
-extern void fir();
+*/
+extern void fir(int x[], int c[], int y[], int n, int m);
 
 int main(void)
 {

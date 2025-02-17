@@ -1,25 +1,20 @@
-
-fir1 simulation results
+fir2 Optimization Summary
 
 SUMMARY:
-|Spike Optimization	|mcycles	|minstret|
-|-------------------|-----------|--------|
-|none	            |6484       |6500    |
-|-O	                |856	    |863     |
-|-O2	            |792	    |797     |
+|Spike Optimization	|mcycles	|minstret   |
+|-------------------|-----------|-----------|
+|none	            |905        |921        |
+|-O	                |861	    |868        |
+|-O2	            |860	    |865        |
         
-|Questa Optimization|mcycles    |minstret|
-|-------------------|-----------|--------|
-|none	            |8623	    |6500    |
-|-O	                |1222	    |863     |
-|-O2	            |943	    |797     |
+|Questa Optimization|mcycles	|minstret   |
+|-------------------|-----------|-----------|
+|none               |1225       |921        |
+|-O	                |1140       |868        |
+|-O2                |1075	    |865        |
 
-
-# Output Logs:
-## Spike
-### No optimization:
-
-(cvw) 09-comp-arch-m@CEAT-ENDV350-09L:~/Desktop/Labs/ecen4243S25-main/cvw/examples/C/fir1$ spike --isa=rv64gc fir1
+No optimization
+spike fir1
 y[0] = 4fad3f2f
 y[1] = 627c6236
 y[2] = 4fad3f32
@@ -37,12 +32,11 @@ y[13] = 1e6f0e17
 y[14] = e190f1eb
 y[15] = b052c0ce
 y[16] = 9d839dc6
-mcycle = 6484
-minstret = 6500
+mcycle = 905
+minstret = 921
 
-### -O optimization:
-
-(cvw) 09-comp-arch-m@CEAT-ENDV350-09L:~/Desktop/Labs/ecen4243S25-main/cvw/examples/C/fir1$ spike --isa=rv64gc fir1
+-O Optimization
+spike fir1
 y[0] = 4fad3f2f
 y[1] = 627c6236
 y[2] = 4fad3f32
@@ -60,13 +54,11 @@ y[13] = 1e6f0e17
 y[14] = e190f1eb
 y[15] = b052c0ce
 y[16] = 9d839dc6
-mcycle = 856
-minstret = 863
+mcycle = 861
+minstret = 868
 
-
-### -O2 optimization:
-
-(cvw) 09-comp-arch-m@CEAT-ENDV350-09L:~/Desktop/Labs/ecen4243S25-main/cvw/examples/C/fir1$ spike --isa=rv64gc fir1
+-O2 Optimization
+spike fir1
 y[0] = 4fad3f2f
 y[1] = 627c6236
 y[2] = 4fad3f32
@@ -84,15 +76,11 @@ y[13] = 1e6f0e17
 y[14] = e190f1eb
 y[15] = b052c0ce
 y[16] = 9d839dc6
-mcycle = 792
-minstret = 797
+mcycle = 860
+minstret = 865
 
-
-## QUESTA
-
-### No Optimization:
-
-# Processing /home/09-comp-arch-m/Desktop/Labs/ecen4243S25-main/cvw/examples/C/fir1/fir1 with --bit-width 64
+Questasim Optimization no optimization
+# Processing /home/09-comp-arch-m/Desktop/Labs/ecen4243S25-main/cvw/examples/C/fir2/fir1 with --bit-width 64
 # y[0] = 4fad3f2f
 # y[1] = 627c6236
 # y[2] = 4fad3f32
@@ -110,12 +98,11 @@ minstret = 797
 # y[14] = e190f1eb
 # y[15] = b052c0ce
 # y[16] = 9d839dc6
-# mcycle = 8623
-# minstret = 6500
+# mcycle = 1225
+# minstret = 921
 
-### -O optimization:
-
-# Processing /home/09-comp-arch-m/Desktop/Labs/ecen4243S25-main/cvw/examples/C/fir1/fir1 with --bit-width 64
+QuestaSim Optimization -O
+# Processing /home/09-comp-arch-m/Desktop/Labs/ecen4243S25-main/cvw/examples/C/fir2/fir1 with --bit-width 64
 # y[0] = 4fad3f2f
 # y[1] = 627c6236
 # y[2] = 4fad3f32
@@ -133,13 +120,11 @@ minstret = 797
 # y[14] = e190f1eb
 # y[15] = b052c0ce
 # y[16] = 9d839dc6
-# mcycle = 1222
-# minstret = 863
+# mcycle = 1140
+# minstret = 868
 
-
-### -O2 optimization:
-
-# Processing /home/09-comp-arch-m/Desktop/Labs/ecen4243S25-main/cvw/examples/C/fir1/fir1 with --bit-width 64
+QuestaSim Optimization -O2
+# Processing /home/09-comp-arch-m/Desktop/Labs/ecen4243S25-main/cvw/examples/C/fir2/fir1 with --bit-width 64
 # y[0] = 4fad3f2f
 # y[1] = 627c6236
 # y[2] = 4fad3f32
@@ -157,7 +142,5 @@ minstret = 797
 # y[14] = e190f1eb
 # y[15] = b052c0ce
 # y[16] = 9d839dc6
-# mcycle = 943
-# minstret = 797
-
-
+# mcycle = 1075
+# minstret = 865
